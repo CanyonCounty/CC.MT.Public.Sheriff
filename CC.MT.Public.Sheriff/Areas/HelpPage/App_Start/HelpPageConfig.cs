@@ -1,6 +1,6 @@
 // Uncomment the following to provide samples for PageResult<T>. Must also add the Microsoft.AspNet.WebApi.OData
 // package to your project.
-////#define Handle_PageResultOfT
+//#define Handle_PageResultOfT
 
 using System;
 using System.Collections;
@@ -12,12 +12,48 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
+using System.Web.Http.Controllers;
+using System.Web.Http.Routing;
+//using CC.MT.Sheriff.Data;
 #if Handle_PageResultOfT
 using System.Web.Http.OData;
 #endif
 
 namespace CC.MT.Public.Sheriff.Areas.HelpPage
 {
+  /// <summary>
+  /// The Class to Hide Controllers from the documentation. They are still usable though.
+  /// </summary>
+  public class MyApiExplorer : ApiExplorer
+  {
+    /// <summary>
+    /// Default Constructor, needed because .NET doesn't inherit constructors (like the rest of the world does)
+    /// </summary>
+    /// <param name="config">The HttpConfiguration</param>
+    public MyApiExplorer(HttpConfiguration config)
+      : base(config)
+    {
+    }
+    
+    /// <summary>
+    /// Checks to see if the controller should be visible
+    /// </summary>
+    /// <param name="controllerVariableValue">The same as controllerDescriptor.ControllerName - lame</param>
+    /// <param name="controllerDescriptor">Information about the controller</param>
+    /// <param name="route">I dunno</param>
+    /// <returns>false if you want it hidden</returns>
+    public override bool ShouldExploreController(string controllerVariableValue, HttpControllerDescriptor controllerDescriptor, IHttpRoute route)
+    {
+      if (controllerVariableValue.Equals("CurrentArrestString")) // your logic to filter out API by route
+      {
+        return false;
+      }
+
+      return base.ShouldExploreController(controllerVariableValue, controllerDescriptor, route);
+    }
+  }
+    
   /// <summary>
   /// Use this class to customize the Help Page.
   /// For example you can set a custom <see cref="System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
@@ -37,17 +73,62 @@ namespace CC.MT.Public.Sheriff.Areas.HelpPage
         Justification = "Part of a URI.")]
     public static void Register(HttpConfiguration config)
     {
+      Inmate inmate = new Inmate("Only set on the first record if there was an error. It will be the error message.");
+      inmate.FirstName = "JOHN";
+      inmate.LastName = "PUBLIC";
+      inmate.MiddleName = "QUE";
+      inmate.IDNumber = "000000";
+
+      Arrest arrest = new Arrest();
+      arrest.ArrestDate = DateTime.Today.ToString();
+      arrest.Agency = "Currently Always Blank";
+      inmate.Arrests = new ArrestList();
+      inmate.Arrests.Add(arrest);
+
+      Charge charge1 = new Charge();
+      charge1.StatuteCode = "I18-2407(2)";
+      charge1.StatuteDesc = "Theft Petit";
+      Charge charge2 = new Charge();
+      charge2.StatuteCode = "I20-222";
+      charge2.StatuteDesc = "Probation Violation [F]";
+
+      inmate.Charges = new ChargeList();
+      inmate.Charges.Add(charge1);
+      inmate.Charges.Add(charge2);
+
+      InmateList inmateList = new InmateList();
+      inmateList.Add(inmate);
+
+      Entities entity = new Entities();
+      entity.CustomerWaitTime = "00:09:30";
+      entity.ID = "2";
+      entity.MaxCustomerWaitTime = "00:21:45";
+      entity.Office = "Canyon County DMV ASSESSOR";
+      EntitiesList entityList = new EntitiesList();
+      entityList.Add(entity);
+
+      Dictionary<string, string> dict = new Dictionary<string,string>();
+      dict.Add("New Registration", "00:09:59");
+      dict.Add("Out-of-State Registation", "00:10:28");
+      dict.Add("...", "Several additional queues");
+      dict.Add("Driver's Training Permit", "00:27:22");
+
+      config.Services.Replace(typeof(IApiExplorer), new MyApiExplorer(config));
+
       //// Uncomment the following to use the documentation from XML documentation file.
       config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml")));
 
       //// Uncomment the following to use "sample string" as the sample for all actions that have string as the body parameter or return type.
       //// Also, the string arrays will be used for IEnumerable<string>. The sample objects will be serialized into different media type 
       //// formats by the available formatters.
-      //config.SetSampleObjects(new Dictionary<Type, object>
-      //{
-      //    {typeof(string), "sample string"},
-      //    {typeof(IEnumerable<string>), new string[]{"sample 1", "sample 2"}}
-      //});
+      config.SetSampleObjects(new Dictionary<Type, object>
+      {
+          {typeof(string), "sample string"},
+          {typeof(IQueryable<string>), new string[]{"A", "B", "...", "W", "Y", "Z"}.AsQueryable()},
+          {typeof(IQueryable<Inmate>), inmateList.AsQueryable()},
+          {typeof(IQueryable<Entities>), entityList.AsQueryable()},
+          {typeof(Dictionary<string, string>), dict}
+      });
 
       // Extend the following to provide factories for types not handled automatically (those lacking parameterless
       // constructors) or for which you prefer to use non-default property values. Line below provides a fallback

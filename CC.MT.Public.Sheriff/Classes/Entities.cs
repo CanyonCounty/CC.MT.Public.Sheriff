@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CC.MT.Sheriff.Tensator.Data
+namespace CC.MT.Public.Sheriff
 {
   /// <summary>
-  /// A List of Entities
+  /// Wait time queues at the DMV
   /// </summary>
   public class EntitiesList : List<Entities> { }
 
@@ -34,13 +34,7 @@ namespace CC.MT.Sheriff.Tensator.Data
     public string CustomerWaitTime
     {
       set { _customerWaitTime = value; }
-      get
-      {
-        double seconds = 0;
-        Double.TryParse(_customerWaitTime, out seconds);
-        TimeSpan ts = new TimeSpan(0, 0, (int)(seconds + 0.5));
-        return ts.ToString();
-      }
+      get { return _customerWaitTime; }
     }
 
     /// <summary>
@@ -49,13 +43,7 @@ namespace CC.MT.Sheriff.Tensator.Data
     public string MaxCustomerWaitTime
     {
       set { _maxCustomerWaitTime = value; }
-      get
-      {
-        double seconds = 0;
-        Double.TryParse(_maxCustomerWaitTime, out seconds);
-        TimeSpan ts = new TimeSpan(0, 0, (int)(seconds + 0.5));
-        return ts.ToString();
-      }
+      get { return _maxCustomerWaitTime; }
     }
 
   }

@@ -5,20 +5,20 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Newtonsoft.Json;
-using CC.MT.Sheriff.Tensator.Data;
+//using CC.MT.Sheriff.Tensator.Data;
 using System.Text;
 
 namespace CC.MT.Public.Sheriff.Controllers
 {
   /// <summary>
-  /// Entity Services are wait queues at the DMV.
+  /// Individual wait time queues at the DMV.
   /// </summary>
-  public class EntitiesServicesController : ApiController
+  public class DMVWaitTimeQueueController : ApiController
   {
     /// <summary>
-    /// Get the Entities Services
+    /// Get the individual wait time queues at the DMV
     /// </summary>
-    /// <returns>Returns the current entity queues and wait times</returns>
+    /// <returns>Returns the current wait time by queue and wait times. Currently there are 20 or so queues. Key is the queue name and value is the current wait time.</returns>
     public Dictionary<string, string> GetEntitiesServices()
     {
       Dictionary<string, string> list = new Dictionary<string, string>();

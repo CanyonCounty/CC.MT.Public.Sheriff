@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 using Newtonsoft.Json;
-using CC.MT.Sheriff.Data;
+//using CC.MT.Sheriff.Data;
 
 namespace CC.MT.Public.Sheriff.Controllers
 {
@@ -26,9 +26,14 @@ namespace CC.MT.Public.Sheriff.Controllers
       try
       {
         WebClient client = new WebClient();
-        byte[] raw = client.DownloadData("http://ccmtprod08.canyonco.org/Sheriff/JailRosterByLetter/" + id);
-        string json = Encoding.UTF8.GetString(raw);
-        list = JsonConvert.DeserializeObject<List<Inmate>>(json);
+        if (id.Length >= 1)
+        {
+          //id = id[0].ToString();
+          // The middle-tier is already only using the first char
+          byte[] raw = client.DownloadData("http://ccmtprod08.canyonco.org/Sheriff/JailRosterByLetter/" + id);
+          string json = Encoding.UTF8.GetString(raw);
+          list = JsonConvert.DeserializeObject<List<Inmate>>(json);
+        }
       }
       catch (Exception e)
       {

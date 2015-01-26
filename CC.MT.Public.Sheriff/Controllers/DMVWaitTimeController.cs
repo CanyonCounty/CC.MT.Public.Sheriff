@@ -5,18 +5,18 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Newtonsoft.Json;
-using CC.MT.Sheriff.Tensator.Data;
+//using CC.MT.Sheriff.Tensator.Data;
 using System.Text;
 
 namespace CC.MT.Public.Sheriff.Controllers
 {
   /// <summary>
-  /// Entities are the combiled wait times per department at the DMV
+  /// Combiled wait time queues per department at the DMV
   /// </summary>
-  public class EntitiesController : ApiController
+  public class DMVWaitTimeController : ApiController
   {
     /// <summary>
-    /// Get the EntitiesServices
+    /// Get the combiled wait time queues per department at the DMV
     /// </summary>
     /// <returns>A List of Entities</returns>
     public IQueryable<Entities> GetEntitiesServices()

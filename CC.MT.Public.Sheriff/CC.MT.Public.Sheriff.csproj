@@ -196,9 +196,12 @@
     <Compile Include="Classes\Entities.cs" />
     <Compile Include="Classes\Inmate.cs" />
     <Compile Include="Classes\InmateList.cs" />
+    <Compile Include="Classes\InmateString.cs" />
+    <Compile Include="Classes\InmateStringList.cs" />
     <Compile Include="Controllers\CurrentArrestController.cs" />
-    <Compile Include="Controllers\EntitiesController.cs" />
-    <Compile Include="Controllers\EntitiesServicesController.cs" />
+    <Compile Include="Controllers\CurrentArrestStringController.cs" />
+    <Compile Include="Controllers\DMVWaitTimeController.cs" />
+    <Compile Include="Controllers\DMVWaitTimeQueueController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JailListController.cs" />
     <Compile Include="Controllers\JailRosterByLetterController.cs" />

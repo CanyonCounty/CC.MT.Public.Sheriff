@@ -5,7 +5,7 @@ using System.Text;
 using System.Data;
 using CC.Common.Data;
 
-namespace CC.MT.Sheriff.Data
+namespace CC.MT.Public.Sheriff
 {
   /// <summary>
   /// A List of <see cref="Charge"/>

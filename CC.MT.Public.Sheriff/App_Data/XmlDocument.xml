@@ -60,6 +60,26 @@
             <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
             <returns>The ID as a string.</returns>
         </member>
+        <member name="T:CC.MT.Public.Sheriff.Areas.HelpPage.MyApiExplorer">
+            <summary>
+            The Class to Hide Controllers from the documentation. They are still usable though.
+            </summary>
+        </member>
+        <member name="M:CC.MT.Public.Sheriff.Areas.HelpPage.MyApiExplorer.#ctor(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Default Constructor, needed because .NET doesn't inherit constructors (like the rest of the world does)
+            </summary>
+            <param name="config">The HttpConfiguration</param>
+        </member>
+        <member name="M:CC.MT.Public.Sheriff.Areas.HelpPage.MyApiExplorer.ShouldExploreController(System.String,System.Web.Http.Controllers.HttpControllerDescriptor,System.Web.Http.Routing.IHttpRoute)">
+            <summary>
+            Checks to see if the controller should be visible
+            </summary>
+            <param name="controllerVariableValue">The same as controllerDescriptor.ControllerName - lame</param>
+            <param name="controllerDescriptor">Information about the controller</param>
+            <param name="route">I dunno</param>
+            <returns>false if you want it hidden</returns>
+        </member>
         <member name="T:CC.MT.Public.Sheriff.Areas.HelpPage.HelpPageConfig">
             <summary>
             Use this class to customize the Help Page.
@@ -940,29 +960,29 @@
             <param name="type">Type</param>
             <returns>string</returns>
         </member>
-        <member name="T:CC.MT.Sheriff.Data.Arrest">
+        <member name="T:CC.MT.Public.Sheriff.Arrest">
             <summary>
             Containing Arrest Class
             </summary>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.Arrest.#ctor">
+        <member name="M:CC.MT.Public.Sheriff.Arrest.#ctor">
             <summary>
             Default Constructor
             </summary>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.Arrest.#ctor(System.Data.DataRow)">
+        <member name="M:CC.MT.Public.Sheriff.Arrest.#ctor(System.Data.DataRow)">
             <summary>
             The DataRow Constructor
             </summary>
             <param name="row">The DataRow to pull information from</param>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.Arrest.ToString">
+        <member name="M:CC.MT.Public.Sheriff.Arrest.ToString">
             <summary>
             To String override
             </summary>
             <returns>The Arrest Info as a string</returns>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.Arrest.IsEqual(System.DateTime,System.String)">
+        <member name="M:CC.MT.Public.Sheriff.Arrest.IsEqual(System.DateTime,System.String)">
             <summary>
             Checks to see if the Arrest is equal to another one
             </summary>
@@ -970,29 +990,29 @@
             <param name="agency">The Arresting agency</param>
             <returns>True if they match</returns>
         </member>
-        <member name="P:CC.MT.Sheriff.Data.Arrest.ArrestDate">
+        <member name="P:CC.MT.Public.Sheriff.Arrest.ArrestDate">
             <summary>
             The Date the Arrest Took Place
             </summary>
         </member>
-        <member name="P:CC.MT.Sheriff.Data.Arrest.Agency">
+        <member name="P:CC.MT.Public.Sheriff.Arrest.Agency">
             <summary>
             The Agency that did the arrest (currently always blank)
             </summary>
         </member>
-        <member name="T:CC.MT.Sheriff.Data.ArrestList">
+        <member name="T:CC.MT.Public.Sheriff.ArrestList">
             <summary>
-            A List of <see cref="T:CC.MT.Sheriff.Data.Arrest"/>
+            A List of <see cref="T:CC.MT.Public.Sheriff.Arrest"/>
             </summary>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.ArrestList.ContainsArrest(System.Data.DataRow)">
+        <member name="M:CC.MT.Public.Sheriff.ArrestList.ContainsArrest(System.Data.DataRow)">
             <summary>
             Checks to see if the Arrest Exists already
             </summary>
             <param name="row">The DataRow to pull information from</param>
             <returns>True if it exists in the list</returns>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.ArrestList.ContainsArrest(System.DateTime,System.String)">
+        <member name="M:CC.MT.Public.Sheriff.ArrestList.ContainsArrest(System.DateTime,System.String)">
             <summary>
             Checks to see if the Arrest Exists already
             </summary>
@@ -1000,29 +1020,29 @@
             <param name="agency">And Agengy to check for</param>
             <returns>True if it exists in the list</returns>
         </member>
-        <member name="T:CC.MT.Sheriff.Data.Charge">
+        <member name="T:CC.MT.Public.Sheriff.Charge">
             <summary>
             Containing Charge Class
             </summary>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.Charge.#ctor">
+        <member name="M:CC.MT.Public.Sheriff.Charge.#ctor">
             <summary>
             The default Constructor
             </summary>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.Charge.#ctor(System.Data.DataRow)">
+        <member name="M:CC.MT.Public.Sheriff.Charge.#ctor(System.Data.DataRow)">
             <summary>
             The DataRow Constructor
             </summary>
             <param name="row">The DataRow to pull information from</param>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.Charge.ToString">
+        <member name="M:CC.MT.Public.Sheriff.Charge.ToString">
             <summary>
             To String override
             </summary>
             <returns>The Arrest Info as a string</returns>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.Charge.IsEqual(System.String,System.String)">
+        <member name="M:CC.MT.Public.Sheriff.Charge.IsEqual(System.String,System.String)">
             <summary>
             Checks to see if the Arrest is equal to another one
             </summary>
@@ -1030,29 +1050,29 @@
             <param name="desc">The Description</param>
             <returns>True if they match</returns>
         </member>
-        <member name="P:CC.MT.Sheriff.Data.Charge.StatuteDesc">
+        <member name="P:CC.MT.Public.Sheriff.Charge.StatuteDesc">
             <summary>
             The Statute Description
             </summary>
         </member>
-        <member name="P:CC.MT.Sheriff.Data.Charge.StatuteCode">
+        <member name="P:CC.MT.Public.Sheriff.Charge.StatuteCode">
             <summary>
             The Statude Code
             </summary>
         </member>
-        <member name="T:CC.MT.Sheriff.Data.ChargeList">
+        <member name="T:CC.MT.Public.Sheriff.ChargeList">
             <summary>
-            A List of <see cref="T:CC.MT.Sheriff.Data.Charge"/>
+            A List of <see cref="T:CC.MT.Public.Sheriff.Charge"/>
             </summary>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.ChargeList.ContainsCharge(System.Data.DataRow)">
+        <member name="M:CC.MT.Public.Sheriff.ChargeList.ContainsCharge(System.Data.DataRow)">
             <summary>
             Checks to see if the Charge Exists already
             </summary>
             <param name="row">The DataRow to pull information from</param>
             <returns>True if it exists in the list</returns>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.ChargeList.ContainsCharge(System.String,System.String)">
+        <member name="M:CC.MT.Public.Sheriff.ChargeList.ContainsCharge(System.String,System.String)">
             <summary>
             Checks to see if the Charge Exists already
             </summary>
@@ -1060,158 +1080,248 @@
             <param name="desc">As well as the Description</param>
             <returns>True if it exists in the list</returns>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.ChargeList.GetCharge(System.Data.DataRow)">
+        <member name="M:CC.MT.Public.Sheriff.ChargeList.GetCharge(System.Data.DataRow)">
             <summary>
             GetCharge
             </summary>
             <param name="row">The DataRow to pull information from</param>
             <returns>A Created Charge</returns>
         </member>
-        <member name="T:CC.MT.Sheriff.Tensator.Data.EntitiesList">
+        <member name="T:CC.MT.Public.Sheriff.EntitiesList">
             <summary>
-            A List of Entities
+            Wait time queues at the DMV
             </summary>
         </member>
-        <member name="T:CC.MT.Sheriff.Tensator.Data.Entities">
+        <member name="T:CC.MT.Public.Sheriff.Entities">
             <summary>
             Entities
             </summary>
         </member>
-        <member name="P:CC.MT.Sheriff.Tensator.Data.Entities.ID">
+        <member name="P:CC.MT.Public.Sheriff.Entities.ID">
             <summary>
             The Entity ID
             </summary>
         </member>
-        <member name="P:CC.MT.Sheriff.Tensator.Data.Entities.Office">
+        <member name="P:CC.MT.Public.Sheriff.Entities.Office">
             <summary>
             The Office Name
             </summary>
         </member>
-        <member name="P:CC.MT.Sheriff.Tensator.Data.Entities.CustomerWaitTime">
+        <member name="P:CC.MT.Public.Sheriff.Entities.CustomerWaitTime">
             <summary>
             The Current Customer Wait Time in hh:mm:ss
             </summary>
         </member>
-        <member name="P:CC.MT.Sheriff.Tensator.Data.Entities.MaxCustomerWaitTime">
+        <member name="P:CC.MT.Public.Sheriff.Entities.MaxCustomerWaitTime">
             <summary>
             The Maximum Customer Wait Time in hh:mm:ss
             </summary>
         </member>
-        <member name="T:CC.MT.Sheriff.Data.Inmate">
+        <member name="T:CC.MT.Public.Sheriff.Inmate">
             <summary>
             Public data on an individual in County Jail
             </summary>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.Inmate.#ctor">
+        <member name="M:CC.MT.Public.Sheriff.Inmate.#ctor">
             <summary>
             Default Constructor
             </summary>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.Inmate.#ctor(System.String)">
+        <member name="M:CC.MT.Public.Sheriff.Inmate.#ctor(System.String)">
             <summary>
             Constructor that takes an error
             </summary>
             <param name="error">The error as to why we could not proceed</param>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.Inmate.#ctor(System.Data.DataRow,System.String)">
+        <member name="M:CC.MT.Public.Sheriff.Inmate.#ctor(System.Data.DataRow,System.String)">
             <summary>
             The Real Constructor
             </summary>
             <param name="row">The DataRow to pull data from</param>
             <param name="system">The current system in use</param>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.Inmate.AddCharge(System.Data.DataRow)">
+        <member name="M:CC.MT.Public.Sheriff.Inmate.AddCharge(System.Data.DataRow)">
             <summary>
             Adds a DataRow Charge
             </summary>
             <param name="row">The DataRow to pull information from</param>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.Inmate.AddArrest(System.Data.DataRow)">
+        <member name="M:CC.MT.Public.Sheriff.Inmate.AddArrest(System.Data.DataRow)">
             <summary>
             Adds a DataRow Arrest
             </summary>
             <param name="row">The DataRow to pull information from</param>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.Inmate.ToString">
+        <member name="M:CC.MT.Public.Sheriff.Inmate.ToString">
             <summary>
             Just the string representation of Inmate
             </summary>
             <returns>A Simple string of id - first middle last name</returns>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.Inmate.IsEqual(System.String)">
+        <member name="M:CC.MT.Public.Sheriff.Inmate.IsEqual(System.String)">
             <summary>
             Tests to see if the Inmate is Equal
             </summary>
             <param name="id">The ID to test for</param>
             <returns>True if they are equal</returns>
         </member>
-        <member name="P:CC.MT.Sheriff.Data.Inmate.Charges">
+        <member name="P:CC.MT.Public.Sheriff.Inmate.Charges">
             <summary>
-            A List of <see cref="T:CC.MT.Sheriff.Data.Charge"/>
+            A List of Charge <see cref="T:CC.MT.Public.Sheriff.Charge"/>
             </summary>
         </member>
-        <member name="P:CC.MT.Sheriff.Data.Inmate.IDNumber">
+        <member name="P:CC.MT.Public.Sheriff.Inmate.IDNumber">
             <summary>
             The Inmate ID
             </summary>
         </member>
-        <member name="P:CC.MT.Sheriff.Data.Inmate.Arrests">
+        <member name="P:CC.MT.Public.Sheriff.Inmate.Arrests">
             <summary>
-            A List of <see cref="T:CC.MT.Sheriff.Data.Arrest"/>
+            A List of Arrest <see cref="T:CC.MT.Public.Sheriff.Arrest"/>
             </summary>
-            <seealso cref="T:CC.MT.Sheriff.Data.Arrest"/>
+            <seealso cref="T:CC.MT.Public.Sheriff.Arrest"/>
         </member>
-        <member name="P:CC.MT.Sheriff.Data.Inmate.LastName">
+        <member name="P:CC.MT.Public.Sheriff.Inmate.LastName">
             <summary>
             Inmates Last Name
             </summary>
         </member>
-        <member name="P:CC.MT.Sheriff.Data.Inmate.FirstName">
+        <member name="P:CC.MT.Public.Sheriff.Inmate.FirstName">
             <summary>
             Inmates First Name
             </summary>
         </member>
-        <member name="P:CC.MT.Sheriff.Data.Inmate.MiddleName">
+        <member name="P:CC.MT.Public.Sheriff.Inmate.MiddleName">
             <summary>
             Inmates Middle Name
             </summary>
         </member>
-        <member name="P:CC.MT.Sheriff.Data.Inmate.VineURL">
+        <member name="P:CC.MT.Public.Sheriff.Inmate.VineURL">
             <summary>
             The VINE URL for Inmate
             </summary>
         </member>
-        <member name="P:CC.MT.Sheriff.Data.Inmate.VineLink">
+        <member name="P:CC.MT.Public.Sheriff.Inmate.VineLink">
             <summary>
             The HTML link for the VINE URL
             </summary>
         </member>
-        <member name="P:CC.MT.Sheriff.Data.Inmate.Error">
+        <member name="P:CC.MT.Public.Sheriff.Inmate.Error">
             <summary>
             If set then there was an error in processing the request for data
             </summary>
         </member>
-        <member name="P:CC.MT.Sheriff.Data.Inmate.ImageThumb">
+        <member name="P:CC.MT.Public.Sheriff.Inmate.ImageThumb">
             <summary>
             The URL to the thumbnail image
             </summary>
         </member>
-        <member name="P:CC.MT.Sheriff.Data.Inmate.ImageFull">
+        <member name="P:CC.MT.Public.Sheriff.Inmate.ImageFull">
             <summary>
             The URL to the full sized image
             </summary>
         </member>
-        <member name="T:CC.MT.Sheriff.Data.InmateList">
+        <member name="T:CC.MT.Public.Sheriff.InmateList">
             <summary>
-            A List of <see cref="T:CC.MT.Sheriff.Data.Inmate"/>
+            A List of <see cref="T:CC.MT.Public.Sheriff.Inmate"/>
             </summary>
         </member>
-        <member name="M:CC.MT.Sheriff.Data.InmateList.GetInmate(System.Data.DataRow)">
+        <member name="T:CC.MT.Public.Sheriff.InmateString">
             <summary>
-            Returns the matching Inmate for the current DataRow
+            Public data on an individual in County Jail
             </summary>
-            <param name="row">The DataRow to pull the id from</param>
-            <returns>a new "empty" Inmate or the one that's found</returns>
+        </member>
+        <member name="M:CC.MT.Public.Sheriff.InmateString.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:CC.MT.Public.Sheriff.InmateString.#ctor(System.String)">
+            <summary>
+            Constructor that takes an error
+            </summary>
+            <param name="error">The error as to why we could not proceed</param>
+        </member>
+        <member name="M:CC.MT.Public.Sheriff.InmateString.#ctor(System.Data.DataRow,System.String)">
+            <summary>
+            The Real Constructor
+            </summary>
+            <param name="row">The DataRow to pull data from</param>
+            <param name="system">The current system in use</param>
+        </member>
+        <member name="M:CC.MT.Public.Sheriff.InmateString.ToString">
+            <summary>
+            Just the string representation of Inmate
+            </summary>
+            <returns>A Simple string of id - first middle last name</returns>
+        </member>
+        <member name="M:CC.MT.Public.Sheriff.InmateString.IsEqual(System.String)">
+            <summary>
+            Tests to see if the Inmate is Equal
+            </summary>
+            <param name="id">The ID to test for</param>
+            <returns>True if they are equal</returns>
+        </member>
+        <member name="P:CC.MT.Public.Sheriff.InmateString.Charges">
+            <summary>
+            A List of <see cref="T:CC.MT.Public.Sheriff.Charge"/>
+            </summary>
+        </member>
+        <member name="P:CC.MT.Public.Sheriff.InmateString.IDNumber">
+            <summary>
+            The Inmate ID
+            </summary>
+        </member>
+        <member name="P:CC.MT.Public.Sheriff.InmateString.Arrests">
+            <summary>
+            A List of <see cref="T:CC.MT.Public.Sheriff.Arrest"/>
+            </summary>
+            <seealso cref="T:CC.MT.Public.Sheriff.Arrest"/>
+        </member>
+        <member name="P:CC.MT.Public.Sheriff.InmateString.LastName">
+            <summary>
+            Inmates Last Name
+            </summary>
+        </member>
+        <member name="P:CC.MT.Public.Sheriff.InmateString.FirstName">
+            <summary>
+            Inmates First Name
+            </summary>
+        </member>
+        <member name="P:CC.MT.Public.Sheriff.InmateString.MiddleName">
+            <summary>
+            Inmates Middle Name
+            </summary>
+        </member>
+        <member name="P:CC.MT.Public.Sheriff.InmateString.VineURL">
+            <summary>
+            The VINE URL for Inmate
+            </summary>
+        </member>
+        <member name="P:CC.MT.Public.Sheriff.InmateString.VineLink">
+            <summary>
+            The HTML link for the VINE URL
+            </summary>
+        </member>
+        <member name="P:CC.MT.Public.Sheriff.InmateString.Error">
+            <summary>
+            If set then there was an error in processing the request for data
+            </summary>
+        </member>
+        <member name="P:CC.MT.Public.Sheriff.InmateString.ImageThumb">
+            <summary>
+            The URL to the thumbnail image
+            </summary>
+        </member>
+        <member name="P:CC.MT.Public.Sheriff.InmateString.ImageFull">
+            <summary>
+            The URL to the full sized image
+            </summary>
+        </member>
+        <member name="T:CC.MT.Public.Sheriff.InmateStringList">
+            <summary>
+            A List of <see cref="T:CC.MT.Public.Sheriff.InmateString"/>
+            </summary>
         </member>
         <member name="T:CC.MT.Public.Sheriff.Controllers.CurrentArrestController">
             <summary>
@@ -1223,29 +1333,42 @@
             <summary>
             Get the Current Arrest List
             </summary>
-            <returns>A List of Inmates</returns>
+            <returns>A List of Inmate</returns>
         </member>
-        <member name="T:CC.MT.Public.Sheriff.Controllers.EntitiesController">
+        <member name="T:CC.MT.Public.Sheriff.Controllers.CurrentArrestStringController">
             <summary>
-            Entities are the combiled wait times per department at the DMV
+            Returns a Current Arrest List. This list is individuals that have been arrested in the past five days,
+            sorted by arrest date with the most current being first (descending).
+            This is different from CurrentArrest in that the Charges are a single string value delimited by a pipe "|" character.
             </summary>
         </member>
-        <member name="M:CC.MT.Public.Sheriff.Controllers.EntitiesController.GetEntitiesServices">
+        <member name="M:CC.MT.Public.Sheriff.Controllers.CurrentArrestStringController.GetCurrentArrests">
             <summary>
-            Get the EntitiesServices
+            Get the Current Arrest List as strings
+            </summary>
+            <returns>A List of Inmates</returns>
+        </member>
+        <member name="T:CC.MT.Public.Sheriff.Controllers.DMVWaitTimeController">
+            <summary>
+            Combiled wait time queues per department at the DMV
+            </summary>
+        </member>
+        <member name="M:CC.MT.Public.Sheriff.Controllers.DMVWaitTimeController.GetEntitiesServices">
+            <summary>
+            Get the combiled wait time queues per department at the DMV
             </summary>
             <returns>A List of Entities</returns>
         </member>
-        <member name="T:CC.MT.Public.Sheriff.Controllers.EntitiesServicesController">
+        <member name="T:CC.MT.Public.Sheriff.Controllers.DMVWaitTimeQueueController">
             <summary>
-            Entity Services are wait queues at the DMV.
+            Individual wait time queues at the DMV.
             </summary>
         </member>
-        <member name="M:CC.MT.Public.Sheriff.Controllers.EntitiesServicesController.GetEntitiesServices">
+        <member name="M:CC.MT.Public.Sheriff.Controllers.DMVWaitTimeQueueController.GetEntitiesServices">
             <summary>
-            Get the Entities Services
+            Get the individual wait time queues at the DMV
             </summary>
-            <returns>Returns the current entity queues and wait times</returns>
+            <returns>Returns the current wait time by queue and wait times. Currently there are 20 or so queues. Key is the queue name and value is the current wait time.</returns>
         </member>
         <member name="T:CC.MT.Public.Sheriff.Controllers.HomeController">
             <summary>
@@ -1269,7 +1392,7 @@
             <summary>
             Get the current Jail List
             </summary>
-            <returns>A List of letters of individuals currently in Jail</returns>
+            <returns>A List of first letters or the last name of individuals currently in Jail. A missing letter means no one by that letter of last name is currently in jail.</returns>
         </member>
         <member name="T:CC.MT.Public.Sheriff.Controllers.JailRosterByLetterController">
             <summary>

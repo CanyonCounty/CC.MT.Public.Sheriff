@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using CC.Common.Data;
-using System.Runtime.Serialization;
 
 namespace CC.MT.Public.Sheriff
 {
   /// <summary>
   /// Public data on an individual in County Jail
   /// </summary>
-  public class Inmate
+  public class InmateString
   {
     private const string _server = "http://images.canyonco.org";
     
@@ -21,8 +20,8 @@ namespace CC.MT.Public.Sheriff
     private string _lastName;
     private string _firstName;
     private string _middleName;
-    private ChargeList _chargeList;
-    private ArrestList _arrestList;
+    private string _chargeList;
+    private string _arrestList;
     private string _timestamp;
     private string _error;
     private string _system;
@@ -32,13 +31,13 @@ namespace CC.MT.Public.Sheriff
     /// <summary>
     /// Default Constructor
     /// </summary>
-    public Inmate(): this(String.Empty){}
+    public InmateString() : this(String.Empty) { }
 
     /// <summary>
     /// Constructor that takes an error
     /// </summary>
     /// <param name="error">The error as to why we could not proceed</param>
-    public Inmate(string error)
+    public InmateString(string error)
     {
       //_agency = String.Empty;
       //_arrestDate = CCData.DefaultDateTime;
@@ -47,10 +46,10 @@ namespace CC.MT.Public.Sheriff
       _lastName = String.Empty;
       _firstName = String.Empty;
       _middleName = String.Empty;
-      _chargeList = new ChargeList();
-      _arrestList = new ArrestList();
+      _chargeList = String.Empty;
+      _arrestList = String.Empty;
       _timestamp = String.Empty;
-      _system = "sh42";
+      _system = String.Empty;
 
       _error = error;
     }
@@ -60,7 +59,7 @@ namespace CC.MT.Public.Sheriff
     /// </summary>
     /// <param name="row">The DataRow to pull data from</param>
     /// <param name="system">The current system in use</param>
-    public Inmate(DataRow row, string system)
+    public InmateString(DataRow row, string system)
     {
       //_agency = CCData.ToString(row["Agency"]);
       //_arrestDate = CCData.ToDateTime(row["ArrestDate"]);
@@ -69,39 +68,31 @@ namespace CC.MT.Public.Sheriff
       _firstName = CCData.ToString(row["FirstName"]).Trim();
       _middleName = CCData.ToString(row["MiddleName"]).Trim();
       _timestamp = CCData.ToString(row["ImageName"]).Trim().Split('.')[0];
-      _chargeList = new ChargeList();
-      _arrestList = new ArrestList();
+      _chargeList = String.Empty;
+      _arrestList = String.Empty;
       _error = String.Empty;
       _system = system;
 
-      AddCharge(row);
-      AddArrest(row);
+      //AddCharge(row);
+      //AddArrest(row);
     }
 
-    /// <summary>
-    /// Adds a DataRow Charge
-    /// </summary>
-    /// <param name="row">The DataRow to pull information from</param>
-    public void AddCharge(DataRow row)
-    {
-      Charge charge = new Charge(row);
-      _chargeList.Add(charge);
-    }
+    //public void AddCharge(DataRow row)
+    //{
+    //  Charge charge = new Charge(row);
+    //  _chargeList.Add(charge);
+    //}
 
     //public void AddCharge(Charge charge)
     //{
     //  _chargeList.Add(charge);
     //}
 
-    /// <summary>
-    /// Adds a DataRow Arrest
-    /// </summary>
-    /// <param name="row">The DataRow to pull information from</param>
-    public void AddArrest(DataRow row)
-    {
-      Arrest arrest = new Arrest(row);
-      _arrestList.Add(arrest);
-    }
+    //public void AddArrest(DataRow row)
+    //{
+    //  Arrest arrest = new Arrest(row);
+    //  _arrestList.Add(arrest);
+    //}
 
     //public void AddArrest(Arrest arrest)
     //{
@@ -109,10 +100,9 @@ namespace CC.MT.Public.Sheriff
     //}
 
     /// <summary>
-    /// A List of Charge <see cref="Charge"/>
+    /// A List of <see cref="Charge"/>
     /// </summary>
-    [DataMember]
-    public ChargeList Charges
+    public String Charges
     {
       get { return _chargeList; }
       set { _chargeList = value; }
@@ -128,11 +118,10 @@ namespace CC.MT.Public.Sheriff
     }
 
     /// <summary>
-    /// A List of Arrest <see cref="Arrest"/>
+    /// A List of <see cref="Arrest"/>
     /// </summary>
     /// <seealso cref="Arrest"/>
-    [DataMember]
-    public ArrestList Arrests
+    public String Arrests
     {
       get { return _arrestList; }
       set { _arrestList = value; }

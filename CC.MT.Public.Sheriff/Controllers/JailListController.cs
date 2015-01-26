@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 using Newtonsoft.Json;
-using CC.MT.Sheriff.Data;
+//using CC.MT.Sheriff.Data;
 
 namespace CC.MT.Public.Sheriff.Controllers
 {
@@ -20,7 +20,7 @@ namespace CC.MT.Public.Sheriff.Controllers
     /// <summary>
     /// Get the current Jail List
     /// </summary>
-    /// <returns>A List of letters of individuals currently in Jail</returns>
+    /// <returns>A List of first letters or the last name of individuals currently in Jail. A missing letter means no one by that letter of last name is currently in jail.</returns>
     public IQueryable<string> GetJailList()
     {
       List<string> list = new List<string>();

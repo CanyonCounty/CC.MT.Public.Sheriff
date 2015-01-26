@@ -21,17 +21,18 @@ namespace CC.MT.Public.Sheriff.Controllers
       string path = String.Empty;
 
       //path = "/CurrentArrest";
+      path = "/CurrentArrestString";
       //path = "/JailList";
       //path = "/JailRosterByLetter/B";
       //path = "/JailRosterByLetter/-ALL";
       //path = "/JailRosterByName/Smith";
-      //path = "/Entities";
-      path = "/EntitiesServices";
+      //path = "/DMVWaitTime";
+      //path = "/DMVWaitTimeQueue";
 
       Response.Redirect(Request.AppRelativeCurrentExecutionFilePath + path);
       return null;
 #else
-       return View();
+      return View();
 #endif
     }
   }
