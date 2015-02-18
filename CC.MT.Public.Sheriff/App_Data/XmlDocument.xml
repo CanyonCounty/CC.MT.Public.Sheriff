@@ -1353,7 +1353,7 @@
             Combiled wait time queues per department at the DMV
             </summary>
         </member>
-        <member name="M:CC.MT.Public.Sheriff.Controllers.DMVWaitTimeController.GetEntitiesServices">
+        <member name="M:CC.MT.Public.Sheriff.Controllers.DMVWaitTimeController.GetDMVWaitTime">
             <summary>
             Get the combiled wait time queues per department at the DMV
             </summary>
@@ -1364,7 +1364,7 @@
             Individual wait time queues at the DMV.
             </summary>
         </member>
-        <member name="M:CC.MT.Public.Sheriff.Controllers.DMVWaitTimeQueueController.GetEntitiesServices">
+        <member name="M:CC.MT.Public.Sheriff.Controllers.DMVWaitTimeQueueController.GetDMVWaitTimeQueue">
             <summary>
             Get the individual wait time queues at the DMV
             </summary>

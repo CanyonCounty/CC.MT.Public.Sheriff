@@ -19,13 +19,13 @@ namespace CC.MT.Public.Sheriff.Controllers
     /// Get the combiled wait time queues per department at the DMV
     /// </summary>
     /// <returns>A List of Entities</returns>
-    public IQueryable<Entities> GetEntitiesServices()
+    public IQueryable<Entities> GetDMVWaitTime()
     {
       List<Entities> list = new EntitiesList();
       try
       {
         WebClient client = new WebClient();
-        byte[] raw = client.DownloadData("http://ccmtprod08.canyonco.org/Sheriff/Entities");
+        byte[] raw = client.DownloadData("http://ccmtprod08.canyonco.org/Sheriff/DMVWaitTime");
         string json = Encoding.UTF8.GetString(raw);
         list = JsonConvert.DeserializeObject<List<Entities>>(json);
       }
