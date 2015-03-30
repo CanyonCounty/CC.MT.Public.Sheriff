@@ -15,8 +15,8 @@ namespace CC.MT.Public.Sheriff
   /// </summary>
   public class Entities
   {
-    private string _customerWaitTime;
-    private string _maxCustomerWaitTime;
+    //private string _customerWaitTime;
+    //private string _maxCustomerWaitTime;
 
     /// <summary>
     /// The Entity ID
@@ -31,20 +31,20 @@ namespace CC.MT.Public.Sheriff
     /// <summary>
     /// The Current Customer Wait Time in hh:mm:ss
     /// </summary>
-    public string CustomerWaitTime
-    {
-      set { _customerWaitTime = value; }
-      get { return _customerWaitTime; }
-    }
+    public string CustomerWaitTime { get; set; }
+    //{
+    //  set { _customerWaitTime = value; }
+    //  get { return _customerWaitTime; }
+    //}
 
     /// <summary>
     /// The Maximum Customer Wait Time in hh:mm:ss
     /// </summary>
-    public string MaxCustomerWaitTime
-    {
-      set { _maxCustomerWaitTime = value; }
-      get { return _maxCustomerWaitTime; }
-    }
+    public string MaxCustomerWaitTime { get; set; }
+    //{
+    //  set { _maxCustomerWaitTime = value; }
+    //  get { return _maxCustomerWaitTime; }
+    //}
 
   }
 }

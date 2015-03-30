@@ -970,26 +970,6 @@
             Default Constructor
             </summary>
         </member>
-        <member name="M:CC.MT.Public.Sheriff.Arrest.#ctor(System.Data.DataRow)">
-            <summary>
-            The DataRow Constructor
-            </summary>
-            <param name="row">The DataRow to pull information from</param>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.Arrest.ToString">
-            <summary>
-            To String override
-            </summary>
-            <returns>The Arrest Info as a string</returns>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.Arrest.IsEqual(System.DateTime,System.String)">
-            <summary>
-            Checks to see if the Arrest is equal to another one
-            </summary>
-            <param name="arrestDate">The Arrest Date</param>
-            <param name="agency">The Arresting agency</param>
-            <returns>True if they match</returns>
-        </member>
         <member name="P:CC.MT.Public.Sheriff.Arrest.ArrestDate">
             <summary>
             The Date the Arrest Took Place
@@ -1005,21 +985,6 @@
             A List of <see cref="T:CC.MT.Public.Sheriff.Arrest"/>
             </summary>
         </member>
-        <member name="M:CC.MT.Public.Sheriff.ArrestList.ContainsArrest(System.Data.DataRow)">
-            <summary>
-            Checks to see if the Arrest Exists already
-            </summary>
-            <param name="row">The DataRow to pull information from</param>
-            <returns>True if it exists in the list</returns>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.ArrestList.ContainsArrest(System.DateTime,System.String)">
-            <summary>
-            Checks to see if the Arrest Exists already
-            </summary>
-            <param name="arrestDate">The Arrest Date</param>
-            <param name="agency">And Agengy to check for</param>
-            <returns>True if it exists in the list</returns>
-        </member>
         <member name="T:CC.MT.Public.Sheriff.Charge">
             <summary>
             Containing Charge Class
@@ -1029,26 +994,6 @@
             <summary>
             The default Constructor
             </summary>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.Charge.#ctor(System.Data.DataRow)">
-            <summary>
-            The DataRow Constructor
-            </summary>
-            <param name="row">The DataRow to pull information from</param>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.Charge.ToString">
-            <summary>
-            To String override
-            </summary>
-            <returns>The Arrest Info as a string</returns>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.Charge.IsEqual(System.String,System.String)">
-            <summary>
-            Checks to see if the Arrest is equal to another one
-            </summary>
-            <param name="statute">The Statute</param>
-            <param name="desc">The Description</param>
-            <returns>True if they match</returns>
         </member>
         <member name="P:CC.MT.Public.Sheriff.Charge.StatuteDesc">
             <summary>
@@ -1064,28 +1009,6 @@
             <summary>
             A List of <see cref="T:CC.MT.Public.Sheriff.Charge"/>
             </summary>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.ChargeList.ContainsCharge(System.Data.DataRow)">
-            <summary>
-            Checks to see if the Charge Exists already
-            </summary>
-            <param name="row">The DataRow to pull information from</param>
-            <returns>True if it exists in the list</returns>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.ChargeList.ContainsCharge(System.String,System.String)">
-            <summary>
-            Checks to see if the Charge Exists already
-            </summary>
-            <param name="statute">The Statute to check for</param>
-            <param name="desc">As well as the Description</param>
-            <returns>True if it exists in the list</returns>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.ChargeList.GetCharge(System.Data.DataRow)">
-            <summary>
-            GetCharge
-            </summary>
-            <param name="row">The DataRow to pull information from</param>
-            <returns>A Created Charge</returns>
         </member>
         <member name="T:CC.MT.Public.Sheriff.EntitiesList">
             <summary>
@@ -1132,38 +1055,6 @@
             Constructor that takes an error
             </summary>
             <param name="error">The error as to why we could not proceed</param>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.Inmate.#ctor(System.Data.DataRow,System.String)">
-            <summary>
-            The Real Constructor
-            </summary>
-            <param name="row">The DataRow to pull data from</param>
-            <param name="system">The current system in use</param>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.Inmate.AddCharge(System.Data.DataRow)">
-            <summary>
-            Adds a DataRow Charge
-            </summary>
-            <param name="row">The DataRow to pull information from</param>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.Inmate.AddArrest(System.Data.DataRow)">
-            <summary>
-            Adds a DataRow Arrest
-            </summary>
-            <param name="row">The DataRow to pull information from</param>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.Inmate.ToString">
-            <summary>
-            Just the string representation of Inmate
-            </summary>
-            <returns>A Simple string of id - first middle last name</returns>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.Inmate.IsEqual(System.String)">
-            <summary>
-            Tests to see if the Inmate is Equal
-            </summary>
-            <param name="id">The ID to test for</param>
-            <returns>True if they are equal</returns>
         </member>
         <member name="P:CC.MT.Public.Sheriff.Inmate.Charges">
             <summary>
@@ -1241,26 +1132,6 @@
             Constructor that takes an error
             </summary>
             <param name="error">The error as to why we could not proceed</param>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.InmateString.#ctor(System.Data.DataRow,System.String)">
-            <summary>
-            The Real Constructor
-            </summary>
-            <param name="row">The DataRow to pull data from</param>
-            <param name="system">The current system in use</param>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.InmateString.ToString">
-            <summary>
-            Just the string representation of Inmate
-            </summary>
-            <returns>A Simple string of id - first middle last name</returns>
-        </member>
-        <member name="M:CC.MT.Public.Sheriff.InmateString.IsEqual(System.String)">
-            <summary>
-            Tests to see if the Inmate is Equal
-            </summary>
-            <param name="id">The ID to test for</param>
-            <returns>True if they are equal</returns>
         </member>
         <member name="P:CC.MT.Public.Sheriff.InmateString.Charges">
             <summary>

@@ -20,9 +20,9 @@ namespace CC.MT.Public.Sheriff.Controllers
 #if DEBUG
       string path = String.Empty;
 
-      //path = "/CurrentArrest";
+      path = "/CurrentArrest";
       //path = "/CurrentArrestString";
-      path = "/JailList";
+      //path = "/JailList";
       //path = "/JailRosterByLetter/B";
       //path = "/JailRosterByLetter/-ALL";
       //path = "/JailRosterByName/Smith";
