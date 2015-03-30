@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using CC.MT.Proxy;
 using Newtonsoft.Json;
-//using CC.MT.Sheriff.Tensator.Data;
-using System.Text;
 
 namespace CC.MT.Public.Sheriff.Controllers
 {
@@ -24,9 +20,8 @@ namespace CC.MT.Public.Sheriff.Controllers
       List<Entities> list = new EntitiesList();
       try
       {
-        WebClient client = new WebClient();
-        byte[] raw = client.DownloadData("http://ccmtprod08.canyonco.org/Sheriff/DMVWaitTime");
-        string json = Encoding.UTF8.GetString(raw);
+        CCProxy proxy = new CCProxy();
+        string json = proxy.GetJSONFromPath("/Sheriff/DMVWaitTime");
         list = JsonConvert.DeserializeObject<List<Entities>>(json);
       }
       catch //(Exception e)

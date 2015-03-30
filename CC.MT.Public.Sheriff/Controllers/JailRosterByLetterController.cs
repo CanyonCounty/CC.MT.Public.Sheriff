@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
 using System.Web.Http;
+using CC.MT.Proxy;
 using Newtonsoft.Json;
-//using CC.MT.Sheriff.Data;
 
 namespace CC.MT.Public.Sheriff.Controllers
 {
@@ -25,13 +22,11 @@ namespace CC.MT.Public.Sheriff.Controllers
       List<Inmate> list = new InmateList();
       try
       {
-        WebClient client = new WebClient();
         if (id.Length >= 1)
         {
-          //id = id[0].ToString();
           // The middle-tier is already only using the first char
-          byte[] raw = client.DownloadData("http://ccmtprod08.canyonco.org/Sheriff/JailRosterByLetter/" + id);
-          string json = Encoding.UTF8.GetString(raw);
+          CCProxy proxy = new CCProxy();
+          string json = proxy.GetJSONFromPath("/Sheriff/JailRosterByLetter/" + id);
           list = JsonConvert.DeserializeObject<List<Inmate>>(json);
         }
       }

@@ -22,11 +22,11 @@ namespace CC.MT.Public.Sheriff.Controllers
 
       //path = "/CurrentArrest";
       //path = "/CurrentArrestString";
-      //path = "/JailList";
+      path = "/JailList";
       //path = "/JailRosterByLetter/B";
       //path = "/JailRosterByLetter/-ALL";
       //path = "/JailRosterByName/Smith";
-      path = "/DMVWaitTime";
+      //path = "/DMVWaitTime";
       //path = "/DMVWaitTimeQueue";
 
       Response.Redirect(Request.AppRelativeCurrentExecutionFilePath + path);

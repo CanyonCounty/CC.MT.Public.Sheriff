@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
 using System.Web.Http;
+using CC.MT.Proxy;
 using Newtonsoft.Json;
-//using CC.MT.Sheriff.Data;
 
 namespace CC.MT.Public.Sheriff.Controllers
 {
@@ -26,9 +23,8 @@ namespace CC.MT.Public.Sheriff.Controllers
       List<string> list = new List<string>();
       try
       {
-        WebClient client = new WebClient();
-        byte[] raw = client.DownloadData("http://ccmtprod08.canyonco.org/Sheriff/JailList");
-        string json = Encoding.UTF8.GetString(raw);
+        CCProxy proxy = new CCProxy();
+        string json = proxy.GetJSONFromPath("/Sheriff/JailList");
         list = JsonConvert.DeserializeObject<List<string>>(json);
       }
       catch (Exception e)
